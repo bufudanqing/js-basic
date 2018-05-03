@@ -1,0 +1,36 @@
+参考这篇
+https://blog.csdn.net/hdchangchang/article/details/10491139
+
+做HK项目，使用element-ui tree,后台返回data中的name值为null，因此在输入关键字进行检索后没有 indexOf这个方法，控制台报错
+解决方案：后台修改数据，前台加判断
+
+    filterNode(value, data) {
+        
+        if (!value || !data.name) return true;        
+        // return data.name.indexOf(value) !== -1;
+        return data.name.toString().indexOf(value) !== -1;
+    },
+    
+    将一个值转换成一个字符串有两种方法，一是使用toString()方法，二是使用转型函数String()。下面是一些需要注意的问题：
+
+　　1，大多值都有toString()方法，null和undefined是没有的。
+
+　　2，对于字符串型的值也可以使用toString()方法，它会返回该字符串的一个副本。
+
+　　3，toString()方法可以传递一个参数，表示数值的基数
+   var t = 8;  
+   t.toString(2);  //1000  
+   
+   默认情况下 参数是10。要说明的是对于非数值类型（boolean，string等）设置toString()的参数是无效的，
+   
+   var t ="8";  
+t.toString(2);  //8, 返回字符串的副本;  
+
+　4，任何值都可以使用String()方法。它的过程是这样的
+
+　　　  首先，如果值有toString()方法，那么则使用该方法(无参数)。
+
+　　　  其次，那就是该值没有toString()方法，那就是 null 返回 "null",undefined返回"undefined"；
+     
+     var a=null;  
+     String(a);    //"null"  
