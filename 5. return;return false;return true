@@ -1,0 +1,16 @@
+var i = (function() { return; })();
+
+i === undefined which means that i == false && i == '' && i == null && i == 0 && !i
+
+var j = (function() { return false; })();
+
+j === false which means that j == false && j == '' && j == null && j == 0 && !j
+
+=====================================================================
+
+
+ Returning false from a function returns the boolean false, where a void return will return undefined
+ 
+ 参考：
+ 
+ https://www.jianshu.com/p/91ffd00db9f5
